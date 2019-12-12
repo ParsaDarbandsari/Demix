@@ -1,14 +1,52 @@
+from commands.directory_commands.goto_parent_directory import GoToParentDirectoryCommand
+from commands.directory_commands.goto_directory import GoToDirectoryCommand
+from utils.utils import *
+import os
+
+USERNAME = os.getenv('USERNAME')
+user_home_directory = os.path.expanduser(os.getenv('USERPROFILE'))
+demix_default_directory_name = "Demix"
+demix_default_directory_path = f"{user_home_directory}\\{demix_default_directory_name}"
+current_directory = user_home_directory
 __author__ = 'Parsa Darbandsari <parsa.darbandsari@outlook.com>'
 __version__ = '1.0'
+PC_NAME = os.getenv('COMPUTERNAME')
+
 NEW_DIRECTORY_COMMAND = "nwdir"
 REMOVE_DIRECTORY_COMMAND = "rmvdir"
 EXECUTE_COMMAND = "/:"
-CHNAGE_DIRECTORY_COMMAND = "goto"
-GO_TO_PARENT_DIRECTORY_COMMAND = "goback"
+GO_TO_DIRECTORY_COMMAND = "goto"  # done
+GO_TO_PARENT_DIRECTORY_COMMAND = "goback"  # done
 LIST_COMMAND = "list"
 REMOVE_FILE_COMMAND = "rmvfile"
 EXIT_COMMAND = 'exit'
 CLEARSCREEN_COMMAND = 'cls'
+DEMIX_SHOW_COMMANDS_COMMAND = "-cmd"
 COMMAND_LIST = [CLEARSCREEN_COMMAND, EXIT_COMMAND, REMOVE_FILE_COMMAND, LIST_COMMAND,
-                GO_TO_PARENT_DIRECTORY_COMMAND, CHNAGE_DIRECTORY_COMMAND, EXECUTE_COMMAND,
-                REMOVE_DIRECTORY_COMMAND, NEW_DIRECTORY_COMMAND]
+				GO_TO_PARENT_DIRECTORY_COMMAND, GO_TO_DIRECTORY_COMMAND, EXECUTE_COMMAND,
+				REMOVE_DIRECTORY_COMMAND, NEW_DIRECTORY_COMMAND]
+
+os.chdir(current_directory)
+while True:
+	current_directory = os.getcwd()
+	prompt = f"{USERNAME}@{PC_NAME}|{current_directory}> "
+	command = get_command(prompt)
+	command = command.split(' ')
+	action = command[0]
+	try:
+		description = command[1]
+	except IndexError:
+		description = ""
+	if action in COMMAND_LIST:
+		if action == GO_TO_DIRECTORY_COMMAND:
+			GoToDirectoryCommand(current_directory, description).exec()
+		
+		if action == GO_TO_PARENT_DIRECTORY_COMMAND:
+			if not(current_directory == 'C:\\'):
+				GoToParentDirectoryCommand(current_directory).exec()
+	else:
+		print(dye(f"Command '{action}' does not exist\n"
+				  f"To see the list of applicable commands, please check out the project README\n"
+				  f"or use the following command\n\n"
+				  f"\tdemix -cmd\n"))
+		
