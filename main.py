@@ -1,5 +1,6 @@
 from commands.directory_commands.goto_parent_directory import GoToParentDirectoryCommand
 from commands.directory_commands.goto_directory import GoToDirectoryCommand
+from commands.directory_commands.remove_directory import RemoveDirectoryCommand
 from commands.directory_commands.new_directory import NewDirectoryCommand
 from utils.utils import *
 import os
@@ -51,6 +52,9 @@ def main(current_directory):
 			
 			if action == NEW_DIRECTORY_COMMAND:
 				NewDirectoryCommand(description).exec()
+			
+			if action == REMOVE_DIRECTORY_COMMAND:
+				RemoveDirectoryCommand(description).exec()
 		else:
 			print(dye(f"Command '{action}' does not exist\n"
 					  f"To see the list of applicable commands, please check out the project README\n"
