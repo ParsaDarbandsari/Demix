@@ -2,9 +2,8 @@ from commands.command import Command
 import os
 
 class GoToParentDirectoryCommand(Command):
-	def __init__(self, dir):
+	def __init__(self):
 		super(GoToParentDirectoryCommand, self).__init__("goback")
-		self.directory = dir
 	
 	def exec(self):
 		parent_directory = os.getcwd()

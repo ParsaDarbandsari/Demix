@@ -7,11 +7,11 @@ class Command(object):
 		self.dir = os.getcwd()
 	
 	def exec(self):
-		raise NotImplementedError
+		raise NotImplementedError()
 	
 	
 	def __str__(self):
 		return self.cmd
 	
 	def __repr__(self):
-		return f"Command {self.cmd} executed at {self.dir}"
+		return f"Command '{self.cmd}' executed at: {self.dir}"

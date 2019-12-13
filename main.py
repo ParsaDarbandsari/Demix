@@ -1,5 +1,6 @@
 from commands.directory_commands.goto_parent_directory import GoToParentDirectoryCommand
 from commands.directory_commands.goto_directory import GoToDirectoryCommand
+from commands.directory_commands.new_directory import NewDirectoryCommand
 from utils.utils import *
 import os
 
@@ -14,7 +15,7 @@ PC_NAME = os.getenv('COMPUTERNAME')
 
 NEW_DIRECTORY_COMMAND = "nwdir"
 REMOVE_DIRECTORY_COMMAND = "rmvdir"
-EXECUTE_COMMAND = "/:"
+EXECUTE_COMMAND = "exc"
 GO_TO_DIRECTORY_COMMAND = "goto"  # done
 GO_TO_PARENT_DIRECTORY_COMMAND = "goback"  # done
 LIST_COMMAND = "list"
@@ -26,27 +27,35 @@ COMMAND_LIST = [CLEARSCREEN_COMMAND, EXIT_COMMAND, REMOVE_FILE_COMMAND, LIST_COM
 				GO_TO_PARENT_DIRECTORY_COMMAND, GO_TO_DIRECTORY_COMMAND, EXECUTE_COMMAND,
 				REMOVE_DIRECTORY_COMMAND, NEW_DIRECTORY_COMMAND]
 
-os.chdir(current_directory)
-while True:
-	current_directory = os.getcwd()
-	prompt = f"{USERNAME}@{PC_NAME}|{current_directory}> "
-	command = get_command(prompt)
-	command = command.split(' ')
-	action = command[0]
-	try:
-		description = command[1]
-	except IndexError:
-		description = ""
-	if action in COMMAND_LIST:
-		if action == GO_TO_DIRECTORY_COMMAND:
-			GoToDirectoryCommand(current_directory, description).exec()
-		
-		if action == GO_TO_PARENT_DIRECTORY_COMMAND:
-			if not(current_directory == 'C:\\'):
-				GoToParentDirectoryCommand(current_directory).exec()
-	else:
-		print(dye(f"Command '{action}' does not exist\n"
-				  f"To see the list of applicable commands, please check out the project README\n"
-				  f"or use the following command\n\n"
-				  f"\tdemix -cmd\n"))
-		
+
+# noinspection PyShadowingNames
+def main(current_directory):
+	os.chdir(current_directory)
+	while True:
+		current_directory = os.getcwd()
+		prompt = f"{USERNAME}@{PC_NAME}|{current_directory}> "
+		command = get_command(prompt)
+		command = command.split(' ')
+		action = command[0]
+		try:
+			description = command[1]
+		except IndexError:
+			description = ""
+		if action in COMMAND_LIST:
+			if action == GO_TO_DIRECTORY_COMMAND:
+				GoToDirectoryCommand(description).exec()
+			
+			if action == GO_TO_PARENT_DIRECTORY_COMMAND:
+				if not (current_directory == 'C:\\'):
+					GoToParentDirectoryCommand().exec()
+			
+			if action == NEW_DIRECTORY_COMMAND:
+				NewDirectoryCommand(description).exec()
+		else:
+			print(dye(f"Command '{action}' does not exist\n"
+					  f"To see the list of applicable commands, please check out the project README\n"
+					  f"or use the following command\n\n"
+					  f"\tdemix -cmd\n"))
+
+if __name__ == '__main__':
+	main(current_directory)
