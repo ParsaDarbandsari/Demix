@@ -18,9 +18,9 @@ class RemoveDirectoryCommand(Command):
 		except PermissionError:
 			print(utils.dye(f"PermissionError: Access Denied"))
 		except OSError:
-			print(f"Folder {self.removing_directory_name} may contain some files,\n"
-				  f"NOTE: There is No going back once the folder has been removed")
-			delete = input(f"Are you sure you want to delete it? [Y/n]\n")
+			print(f"Folder {self.removing_directory_name} may contain some files,\n")
+			delete = input(f"Are you sure you want to delete it? [Y/n]\n"
+						   f"NOTE: There is No going back once the folder and it's files had been removed\n")
 			delete = delete.upper()
 			
 			if delete == 'Y':

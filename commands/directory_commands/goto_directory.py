@@ -13,3 +13,5 @@ class GoToDirectoryCommand(Command):
 			os.chdir(f"{self.dir}\\{self.folder}")
 		except FileNotFoundError:
 			print(dye(f"FileNotFoundError: Folder '{self.folder}' does not exist"))
+		except PermissionError:
+			print(dye(f"PermissionError: Access Denied"))
