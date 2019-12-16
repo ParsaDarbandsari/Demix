@@ -11,8 +11,7 @@ user_home_directory = os.path.expanduser(os.getenv('USERPROFILE'))
 demix_default_directory_name = "Demix"
 demix_default_directory_path = f"{user_home_directory}\\{demix_default_directory_name}"
 current_directory = user_home_directory
-__author__ = 'Parsa Darbandsari <parsa.darbandsari@outlook.com>'
-__version__ = '1.0'
+__version__ = '1.0.0'
 PC_NAME = os.getenv('COMPUTERNAME')
 
 NEW_DIRECTORY_COMMAND = "nwdir"  # done
