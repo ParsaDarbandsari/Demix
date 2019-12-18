@@ -2,6 +2,7 @@ from commands.directory_commands.goto_parent_directory import GoToParentDirector
 from commands.directory_commands.goto_directory import GoToDirectoryCommand
 from commands.directory_commands.remove_directory import RemoveDirectoryCommand
 from commands.directory_commands.new_directory import NewDirectoryCommand
+from commands.directory_commands.list_directory import ListDirectoryCommand
 from commands.execute_command import ExecuteCommand
 from utils.utils import *
 import os
@@ -14,7 +15,7 @@ current_directory = user_home_directory
 __version__ = '1.0.0'
 PC_NAME = os.getenv('COMPUTERNAME')
 
-NEW_DIRECTORY_COMMAND = "nwdir"  # done
+NEW_DIRECTORY_COMMAND = 'nwdir'  # done
 REMOVE_DIRECTORY_COMMAND = "rmvdir"  # done
 EXECUTE_COMMAND = "exc"
 GO_TO_DIRECTORY_COMMAND = "goto"  # done
@@ -58,6 +59,9 @@ def main(current_directory):
 			if action == EXECUTE_COMMAND:
 				ExecuteCommand(description).exec()
 			
+			if action == LIST_COMMAND:
+				ListDirectoryCommand().exec()
+		
 		else:
 			print(dye(f"Command '{action}' does not exist\n"
 					  f"To see the list of applicable commands, please check out the project README\n"
