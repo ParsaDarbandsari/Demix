@@ -2,8 +2,8 @@ import os
 
 
 class Command(object):
-	def __init__(self, execution_command):
-		self.cmd = execution_command
+	cmd = ''
+	def __init__(self):
 		self.dir = os.getcwd()
 	
 	def exec(self):

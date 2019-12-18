@@ -3,8 +3,9 @@ from utils import utils
 import os
 
 class NewDirectoryCommand(Command):
+	cmd = 'nwdir'
 	def __init__(self, new_directory_name):
-		super(NewDirectoryCommand, self).__init__('nwdir')
+		super(NewDirectoryCommand, self).__init__()
 		self.new_directory_name = new_directory_name
 	
 	def exec(self):

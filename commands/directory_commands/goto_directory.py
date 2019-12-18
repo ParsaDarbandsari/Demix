@@ -4,9 +4,10 @@ import os
 
 
 class GoToDirectoryCommand(Command):
+	cmd = "goto"
 	def __init__(self, folder):
 		self.folder = folder
-		super(GoToDirectoryCommand, self).__init__("goto")
+		super(GoToDirectoryCommand, self).__init__()
 	
 	def exec(self):
 		try:

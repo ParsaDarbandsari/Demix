@@ -12,21 +12,20 @@ user_home_directory = os.path.expanduser(os.getenv('USERPROFILE'))
 demix_default_directory_name = "Demix"
 demix_default_directory_path = f"{user_home_directory}\\{demix_default_directory_name}"
 current_directory = user_home_directory
-__version__ = '1.0.0'
 PC_NAME = os.getenv('COMPUTERNAME')
 
-NEW_DIRECTORY_COMMAND = 'nwdir'  # done
-REMOVE_DIRECTORY_COMMAND = "rmvdir"  # done
-EXECUTE_COMMAND = "exc"
-GO_TO_DIRECTORY_COMMAND = "goto"  # done
-GO_TO_PARENT_DIRECTORY_COMMAND = "goback"  # done
-LIST_COMMAND = "listdir"
+NEW_DIRECTORY_COMMAND = NewDirectoryCommand.cmd  # done
+REMOVE_DIRECTORY_COMMAND = RemoveDirectoryCommand.cmd  # done
+EXECUTE_COMMAND = ExecuteCommand.cmd
+GO_TO_DIRECTORY_COMMAND = GoToDirectoryCommand.cmd  # done
+GO_TO_PARENT_DIRECTORY_COMMAND = GoToParentDirectoryCommand.cmd  # done
+LIST_COMMAND = ListDirectoryCommand.cmd # done
 EXIT_COMMAND = 'exit'
 CLEARSCREEN_COMMAND = 'cls'
-DEMIX_INFO_COMMAND = "-cmd"
-COMMAND_LIST = [CLEARSCREEN_COMMAND, EXIT_COMMAND, LIST_COMMAND, GO_TO_PARENT_DIRECTORY_COMMAND,
-				GO_TO_DIRECTORY_COMMAND, EXECUTE_COMMAND,
-				REMOVE_DIRECTORY_COMMAND, NEW_DIRECTORY_COMMAND]
+DEMIX_COMMAND = "demix"
+COMMAND_LIST = [CLEARSCREEN_COMMAND, EXIT_COMMAND, LIST_COMMAND,
+				GO_TO_PARENT_DIRECTORY_COMMAND, GO_TO_DIRECTORY_COMMAND, EXECUTE_COMMAND,
+				REMOVE_DIRECTORY_COMMAND, NEW_DIRECTORY_COMMAND, DEMIX_COMMAND]
 
 
 # noinspection PyShadowingNames
@@ -66,7 +65,7 @@ def main(current_directory):
 			print(dye(f"Command '{action}' does not exist\n"
 					  f"To see the list of applicable commands, please check out the project README\n"
 					  f"or use the following command\n\n"
-					  f"\tdemix -cmd\n"))
+					  f"\t{DEMIX_COMMAND} -cmd\n"))
 
 if __name__ == '__main__':
 	main(current_directory)

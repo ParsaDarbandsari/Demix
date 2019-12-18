@@ -4,8 +4,9 @@ import os
 
 
 class ExecuteCommand(Command):
+	cmd = 'exc'
 	def __init__(self, executing_file):
-		super(ExecuteCommand, self).__init__('exc')
+		super(ExecuteCommand, self).__init__()
 		self.executing_file = executing_file
 	
 	def exec(self):

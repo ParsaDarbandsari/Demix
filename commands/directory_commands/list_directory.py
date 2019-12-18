@@ -5,8 +5,9 @@ import os
 
 
 class ListDirectoryCommand(Command):
+	cmd = 'listdir'
 	def __init__(self):
-		super(ListDirectoryCommand, self).__init__('listdir')
+		super(ListDirectoryCommand, self).__init__()
 	
 	def exec(self):
 		directories = os.listdir(self.dir)
