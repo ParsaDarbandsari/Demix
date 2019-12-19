@@ -6,8 +6,8 @@ import os
 class GoToDirectoryCommand(Command):
 	cmd = "goto"
 	def __init__(self, folder):
-		self.folder = folder
 		super(GoToDirectoryCommand, self).__init__()
+		self.folder = folder.replace('..', ' ')
 	
 	def exec(self):
 		try:
