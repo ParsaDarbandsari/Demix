@@ -6,6 +6,11 @@ import os
 
 class RemoveDirectoryCommand(Command):
 	cmd = 'rmvdir'
+	usage = {
+		'usage': f'{cmd} [removing directory name]',
+		'description': 'Removes an existing directory (whether empty or not)'
+	}
+	
 	def __init__(self, directory_name):
 		super(RemoveDirectoryCommand, self).__init__()
 		self.removing_directory_name = directory_name

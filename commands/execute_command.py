@@ -5,6 +5,10 @@ import os
 
 class ExecuteCommand(Command):
 	cmd = 'exc'
+	usage = {
+		'usage': f'{cmd} [file name]',
+		'description': 'Runs an application or opens a file or a folder in File explorer'
+	}
 	def __init__(self, executing_file):
 		super(ExecuteCommand, self).__init__()
 		self.executing_file = executing_file

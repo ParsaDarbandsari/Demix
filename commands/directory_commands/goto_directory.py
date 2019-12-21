@@ -5,6 +5,11 @@ import os
 
 class GoToDirectoryCommand(Command):
 	cmd = "goto"
+	usage = {
+		'usage': f'{cmd} [directory_name]',
+		'description': 'Switches to one of the subdirectories of your current directory (if any)'
+	}
+	
 	def __init__(self, folder):
 		super(GoToDirectoryCommand, self).__init__()
 		self.folder = folder.replace('..', ' ')

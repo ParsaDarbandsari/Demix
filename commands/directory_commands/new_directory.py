@@ -4,6 +4,11 @@ import os
 
 class NewDirectoryCommand(Command):
 	cmd = 'nwdir'
+	usage = {
+		'usage': f'{cmd} [new directory name]',
+		'description': 'Creates a new empty directory'
+	}
+	
 	def __init__(self, new_directory_name):
 		super(NewDirectoryCommand, self).__init__()
 		self.new_directory_name = new_directory_name

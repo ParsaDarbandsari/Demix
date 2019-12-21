@@ -2,7 +2,12 @@ import os
 
 
 class Command(object):
-	cmd = ''
+	cmd = None
+	usage = {
+		'usage': None,
+		'description': None
+	}
+	
 	def __init__(self):
 		self.dir = os.getcwd()
 	

@@ -4,6 +4,7 @@ from commands.directory_commands.remove_directory import RemoveDirectoryCommand
 from commands.directory_commands.new_directory import NewDirectoryCommand
 from commands.directory_commands.list_directory import ListDirectoryCommand
 from commands.execute_command import ExecuteCommand
+from commands.demix_commands import DemixCommands
 from utils.utils import *
 import os
 
@@ -20,9 +21,9 @@ EXECUTE_COMMAND = ExecuteCommand.cmd
 GO_TO_DIRECTORY_COMMAND = GoToDirectoryCommand.cmd  # done
 GO_TO_PARENT_DIRECTORY_COMMAND = GoToParentDirectoryCommand.cmd  # done
 LIST_COMMAND = ListDirectoryCommand.cmd # done
+DEMIX_COMMAND = DemixCommands.cmd
 EXIT_COMMAND = 'exit'
 CLEARSCREEN_COMMAND = 'cls'
-DEMIX_COMMAND = "demix"
 COMMAND_LIST = [CLEARSCREEN_COMMAND, EXIT_COMMAND, LIST_COMMAND,
 				GO_TO_PARENT_DIRECTORY_COMMAND, GO_TO_DIRECTORY_COMMAND, EXECUTE_COMMAND,
 				REMOVE_DIRECTORY_COMMAND, NEW_DIRECTORY_COMMAND, DEMIX_COMMAND]
@@ -60,10 +61,13 @@ def main(current_directory):
 			
 			if action == LIST_COMMAND:
 				ListDirectoryCommand().exec()
+			
+			if action == DEMIX_COMMAND:
+				DemixCommands(description)
 		
 		else:
 			print(dye(f"Command '{action}' does not exist\n"
-					  f"To see the list of applicable commands, please check out the project README\n"
+					  f"To see the list of applicable commands, please check out the project wiki\n"
 					  f"or use the following command\n\n"
 					  f"\t{DEMIX_COMMAND} -cmd\n"))
 
