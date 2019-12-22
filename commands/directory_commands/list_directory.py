@@ -11,8 +11,12 @@ class ListDirectoryCommand(Command):
 		'description': "Shows you a list of files and folders in your current directory"
 	}
 	
-	def __init__(self):
+	def __init__(self, show_usage=False):
 		super(ListDirectoryCommand, self).__init__()
+		if not show_usage:
+			self.exec()
+		else:
+			print(f"{self.usage['usage']}")
 	
 	def exec(self):
 		directories = os.listdir(self.dir)

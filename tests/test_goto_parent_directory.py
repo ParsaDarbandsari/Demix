@@ -3,5 +3,5 @@ import os
 
 def test_goto_parent_directory_command_executable():
 	os.chdir("C:\\Users\\parsa\\projects\\Demix\\tests")
-	GoToParentDirectoryCommand().exec()
+	GoToParentDirectoryCommand()
 	assert os.getcwd() == f"C:\\Users\\parsa\\projects\\Demix"

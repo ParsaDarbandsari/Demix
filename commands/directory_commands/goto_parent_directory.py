@@ -1,4 +1,5 @@
 from commands.command import Command
+from utils.utils import *
 import os
 
 class GoToParentDirectoryCommand(Command):
@@ -8,8 +9,12 @@ class GoToParentDirectoryCommand(Command):
 		'description': 'Returns to the parent directory of the current directory'
 	}
 	
-	def __init__(self):
+	def __init__(self, show_usage=False):
 		super(GoToParentDirectoryCommand, self).__init__()
+		if show_usage == True:
+			print(dye(f"usage: {self.usage['usage']}"))
+		else:
+			self.exec()
 	
 	def exec(self):
 		parent_directory = os.path.pardir

@@ -12,7 +12,11 @@ class GoToDirectoryCommand(Command):
 	
 	def __init__(self, folder):
 		super(GoToDirectoryCommand, self).__init__()
-		self.folder = folder.replace('..', ' ')
+		if folder != "":
+			self.folder = folder
+			self.exec()
+		else:
+			print(dye(f"usage: {self.usage['usage']}"))
 	
 	def exec(self):
 		try:

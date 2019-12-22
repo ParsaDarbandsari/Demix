@@ -17,10 +17,11 @@ class DemixCommands(Command):
 	
 	def __init__(self, command):
 		super(DemixCommands, self).__init__()
-		if command == '-cmd':
-			self.show_applicable_commands()
-		else:
-			print(self.usage['usage'])
+		if command in self.demix_commands:
+			if command == '-cmd':
+				self.show_applicable_commands()
+			else:
+				print(self.usage['usage'])
 	
 	def show_applicable_commands(self):
 		separator = (50, ' ')

@@ -42,25 +42,38 @@ def main(current_directory):
 			description = command[1]
 		except IndexError:
 			description = ""
+		 
+		description = description.replace('..', ' ')
+		
 		if action in COMMAND_LIST:
 			if action == GO_TO_DIRECTORY_COMMAND:
-				GoToDirectoryCommand(description).exec()
+				GoToDirectoryCommand(description)
 			
 			if action == GO_TO_PARENT_DIRECTORY_COMMAND:
-				if not (current_directory == 'C:\\'):
-					GoToParentDirectoryCommand().exec()
+				if not current_directory == 'C:\\':
+					if description == '-u':
+						show_usage = True
+					else:
+						show_usage = False
+					
+					GoToParentDirectoryCommand(show_usage=show_usage)
 			
 			if action == NEW_DIRECTORY_COMMAND:
-				NewDirectoryCommand(description).exec()
+				NewDirectoryCommand(description)
 			
 			if action == REMOVE_DIRECTORY_COMMAND:
-				RemoveDirectoryCommand(description).exec()
+				RemoveDirectoryCommand(description)
 			
 			if action == EXECUTE_COMMAND:
-				ExecuteCommand(description).exec()
+				ExecuteCommand(description)
 			
 			if action == LIST_COMMAND:
-				ListDirectoryCommand().exec()
+				if description == '-u':
+					show_usage = True
+				else:
+					show_usage = False
+				
+				ListDirectoryCommand(show_usage=show_usage)
 			
 			if action == DEMIX_COMMAND:
 				DemixCommands(description)

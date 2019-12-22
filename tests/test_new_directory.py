@@ -5,7 +5,7 @@ def test_new_directory_command_non_existing_folder():
 	path = 'C:\\Users\\parsa'
 	new_folder_name = 'peekaboo'
 	os.chdir(path)
-	NewDirectoryCommand(new_folder_name).exec()
+	NewDirectoryCommand(new_folder_name)
 	assert new_folder_name in os.listdir(path)
 
 
