@@ -25,3 +25,5 @@ class GoToDirectoryCommand(Command):
 			print(dye(f"FileNotFoundError: Folder '{self.folder}' does not exist"))
 		except PermissionError:
 			print(dye(f"PermissionError: Access Denied"))
+		except NotADirectoryError:
+			print(dye(f"NotADirectoryError: {self.folder} is not a File Folder"))
