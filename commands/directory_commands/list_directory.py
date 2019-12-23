@@ -20,6 +20,13 @@ class ListDirectoryCommand(Command):
 	
 	def exec(self):
 		directories = os.listdir(self.dir)
+		if directories != []:
+			self.__list_dir(directories)
+		else:
+			print(f"Directory '{self.dir}' is empty")
+	
+	@staticmethod
+	def __list_dir(directories):
 		spaces = (40, ' ')
 		acceptable_file_length = spaces[0] - 5
 		headers = {
